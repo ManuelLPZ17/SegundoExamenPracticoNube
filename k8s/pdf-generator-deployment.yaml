@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pdf-generator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pdf-generator
+  template:
+    metadata:
+      labels:
+        app: pdf-generator
+    spec:
+      containers:
+        - name: pdf-generator
+          image: manuellpz17/examen2-pdf-generator:latest
+          ports:
+            - containerPort: 8081
+          envFrom:
+            - configMapRef:
+                name: examen2-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pdf-generator-service
+spec:
+  type: ClusterIP
+  selector:
+    app: pdf-generator
+  ports:
+    - port: 8081
+      targetPort: 8081

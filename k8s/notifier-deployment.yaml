@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notifier
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notifier
+  template:
+    metadata:
+      labels:
+        app: notifier
+    spec:
+      containers:
+        - name: notifier
+          image: manuellpz17/examen2-notifier:latest
+          ports:
+            - containerPort: 8082
+          envFrom:
+            - configMapRef:
+                name: examen2-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: notifier-service
+spec:
+  type: ClusterIP
+  selector:
+    app: notifier
+  ports:
+    - port: 8082
+      targetPort: 8082
