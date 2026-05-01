@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: tuusuario/examen2-api:latest
+          image: manuellpz17/examen2-api:latest
           ports:
             - containerPort: 8080
           envFrom:

@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 
 app = Flask(__name__)
 
+
 def get_secret(name):
     client = boto3.client("secretsmanager", region_name="us-east-1")
     return client.get_secret_value(SecretId=name)["SecretString"]
@@ -70,8 +71,8 @@ def generate():
             "veces-enviado": "1"
         }
     )
-
-    url = f"http://API_SERVICE_URL:8080/notas/{folio}/download"
+    url = f"http://EXTERNAL-IP/notas/{folio}/download"
+  #  url = f"http://API_SERVICE_URL:8080/notas/{folio}/download"
     return jsonify({"url": url, "s3_key": s3_key})
 
 if __name__ == "__main__":

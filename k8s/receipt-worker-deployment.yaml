@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: receipt-worker
-          image: tuusuario/examen2-receipt-worker:latest
+          image: manuellpz17/examen2-receipt-worker:latest
           envFrom:
             - configMapRef:
                 name: examen2-config

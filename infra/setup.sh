@@ -4,7 +4,7 @@ set -e
 export AWS_PAGER=cat
 REGION=us-east-1
 EXPEDIENTE=753353
-BUCKET="${EXPEDIENTE}-esi3898k-examen2"
+BUCKET="${EXPEDIENTE}-examen2"
 DB_PASS="Password123!"
 SNS_EMAIL="malop1237@gmail.com"
 
@@ -98,3 +98,4 @@ echo "SQS_URL=$SQS_URL"
 echo "SNS_ARN=$SNS_ARN"
 echo "BUCKET=$BUCKET"
 echo "SG_RDS=$SGRDS"
+
